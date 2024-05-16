@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -23,7 +20,7 @@ class Categories extends StatelessWidget {
               onPressed: () {},
               child: const Text(
                 'SEE ALL',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 13,color: Colors.deepOrange),
               ),
             )
           ],
@@ -39,8 +36,8 @@ class Categories extends StatelessWidget {
               CategoryIcon(icon: Ionicons.ice_cream_outline),
               CategoryIcon(icon: Ionicons.restaurant_outline),
               CategoryIcon(icon: Ionicons.wine_outline),
-                 CategoryIcon(icon: Ionicons.footsteps),
-                    CategoryIcon(icon: Ionicons.watch),
+              CategoryIcon(icon: Ionicons.footsteps),
+              CategoryIcon(icon: Ionicons.watch),
             ],
           ),
         ),
@@ -49,24 +46,38 @@ class Categories extends StatelessWidget {
   }
 }
 
-class CategoryIcon extends StatelessWidget {
+class CategoryIcon extends StatefulWidget {
   final IconData icon;
 
   const CategoryIcon({Key? key, required this.icon}) : super(key: key);
 
   @override
+  _CategoryIconState createState() => _CategoryIconState();
+}
+
+class _CategoryIconState extends State<CategoryIcon> {
+  bool _isSelected = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(15),
-        child: Container(
-          height: 50,
-          width: 50,
-          color: Colors.orange,
-          child: Icon(
-            icon,
-            color: Colors.white,
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _isSelected = !_isSelected;
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: Container(
+            height: 50,
+            width: 50,
+            color: _isSelected ? Colors.deepOrange : Colors.grey[300],
+            child: Icon(
+              widget.icon,
+              color: _isSelected ? Colors.white : Colors.grey[700],
+            ),
           ),
         ),
       ),

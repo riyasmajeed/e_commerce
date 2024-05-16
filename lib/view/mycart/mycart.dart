@@ -1,4 +1,5 @@
 import 'package:e_commerce/colour.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/model/model.dart';
 import 'package:e_commerce/view/cartcontroller.dart';
@@ -13,7 +14,10 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart'),
+        centerTitle: true,
+        title: Text(' My Cart',style: TextStyle(
+          fontWeight: FontWeight.bold,fontSize: 20
+        ),),
       ),
       body: Consumer<CartController>(
         builder: (context, cartController, child) {
@@ -22,60 +26,118 @@ class CartScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final product = cartController.cartItems[index];
               return ListTile(
-                title: Container(
-                  width: double.infinity,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Color.fromARGB(51, 202, 197, 197),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 50,
-                        child: Image.network(product.product.image),
-                        decoration: BoxDecoration(),
+                title: Stack(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color.fromARGB(51, 202, 197, 197),
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            width: 200,
-                            child: Text(product.product.title),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20,top: 15,bottom: 15,left: 10),
+                            child: Container(
+                                height: 120,
+                                  width: 95,
+                                  decoration: BoxDecoration(
+                                    color: Color.fromARGB(46, 221, 12, 12),
+                                    borderRadius: BorderRadius.circular(18)
+                                  ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Container(
+                                  height: 200,
+                                  width: 30,
+                                  child: Image.network(product.product.image),
+                                  decoration: BoxDecoration(
+                                     borderRadius: BorderRadius.circular(18)
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                          Text('\$${product.product.price}'),
-                        ],
-                      ),
-                      // SizedBox(width: 20),
-                      Row(
-                        
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                        
-                          IconButton(
                           
-                            onPressed: () {
-                              cartController.addToCart(product.product);
-                            },
-                            icon: Icon(Icons.add),
-                          ),
-                          Text('${product.quantity}'),
-                          IconButton(
-                            onPressed: () {
-                              cartController.removeFromCart(product.product);
-                            },
-                            icon: Icon(Icons.remove),
-                          ),
+                          // SizedBox(width: 20),
+                          
                         ],
                       ),
                       
-                    ],
-                  ),
+                    ),
+                   
+                     Positioned(
+                       child: Padding(
+                         padding: const EdgeInsets.only(top: 25,left: 120,right: 15),
+                         child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(product.product.title,style: TextStyle(fontWeight: FontWeight.bold),),
+                              Text('\$${product.product.price}' ,style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 22,
+                                          color: Colors.black
+                                        ),),
+                              
+                              
+                       
+                             
+                            ],
+                          ),
+                       ),
+                     ),
+                     
+                    Positioned(
+                      right: 15,
+                      bottom: 33,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 10, right: 10),
+                        child: Container(
+                          height: 35,
+                          width: 80,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10), color: Colors.white),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () {
+                                  cartController.addToCart(product.product);
+                                },
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.orange,
+                                ),
+                              ),
+                              
+                              Text(
+                                '${product.quantity}',
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () {
+                                  cartController.removeFromCart(product.product);
+                                },
+                                child: Icon(
+                                  Icons.remove,
+                                  color: Colors.orange,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               );
             },

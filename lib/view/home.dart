@@ -46,17 +46,34 @@ class _HomeState extends State<Home> {
           children: [
             Container(
               height: 38,
-              width: 85,
+              width: 95,
               decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 240, 194, 125),
+                  color:currentTab == 2 ? Color.fromARGB(30, 255, 86, 34) : Color.fromARGB(90, 189, 189, 189) ,
                   borderRadius: BorderRadius.circular(15)),
-              child: IconButton(
-                onPressed: () => setState(() {
-                  currentTab = 2;
-                }),
-                icon: Icon(
-                  Icons.home,
-                  color: currentTab == 2 ? Colors.deepOrange : Colors.grey.shade400,
+              child: InkWell(
+                onTap: () => setState(() {
+                         currentTab = 2;
+                      }) ,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.home,
+                    color:currentTab == 2 ? Colors.deepOrange : Colors.grey.shade400 ,),
+                    // IconButton(
+                    //   onPressed: () => setState(() {
+                    //     currentTab = 2;
+                    //   }),
+                    //   icon: Icon(
+                    //     Icons.home,
+                    //     color: currentTab == 2 ? Colors.deepOrange : Colors.grey.shade400,
+                    //   ),
+                    // ),
+                    SizedBox(width: 3,),
+                    Text('Home',style: TextStyle(
+                      fontSize: 13,fontWeight: FontWeight.bold,
+                      color:currentTab == 2 ? Colors.deepOrange : Colors.grey.shade400 
+                    ),)
+                  ],
                 ),
               ),
             ),

@@ -26,11 +26,12 @@ class mainHomeScreenState extends State<mainHomeScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(18),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HomeAppBar(),
+                   SizedBox(height: 30),
                 Container(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
