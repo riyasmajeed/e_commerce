@@ -138,6 +138,7 @@ class _CardScreenState extends State<CardScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
+                                      
                                   product.title,
                                   style: const TextStyle(
                                   color: Color.fromARGB(255, 122, 118, 118),

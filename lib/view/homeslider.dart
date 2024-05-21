@@ -25,8 +25,8 @@ class _homesliderState extends State<homeslider> {
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
         autoPlay: false,
-        aspectRatio: 3.1, // Aspect ratio to maintain the image's aspect ratio
-        viewportFraction: 0.9, // Width of the slider's visible area
+        aspectRatio: 4.1, // Aspect ratio to maintain the image's aspect ratio
+        viewportFraction: 1.0, // Width of the slider's visible area
         height: 160, // Height of the carousel slider
         
       ),
@@ -35,7 +35,7 @@ class _homesliderState extends State<homeslider> {
           builder: (BuildContext context) {
             return ClipRRect(
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              borderRadius: BorderRadius.circular(28),
+              borderRadius: BorderRadius.circular(20),
               child: Stack(
                 fit: StackFit.expand,
                 children: <Widget>[

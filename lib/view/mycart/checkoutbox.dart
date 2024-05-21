@@ -16,7 +16,7 @@ class CheckOutBox extends StatelessWidget {
 
     return SingleChildScrollView(
       child: Container(
-        height: 250,
+      
         width: double.infinity,
         decoration: const BoxDecoration(
           color: Colors.white,

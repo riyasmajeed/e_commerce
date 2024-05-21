@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CartController()),
       ],
       child: MaterialApp(
+         debugShowCheckedModeBanner: false,
         home: Home(),
       ),
     );

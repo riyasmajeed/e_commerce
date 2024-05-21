@@ -105,22 +105,7 @@ class CartScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () {
-                                  cartController.addToCart(product.product);
-                                },
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.orange,
-                                ),
-                              ),
                               
-                              Text(
-                                '${product.quantity}',
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                              ),
                               InkWell(
                                 splashColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
@@ -130,6 +115,23 @@ class CartScreen extends StatelessWidget {
                                 child: Icon(
                                   Icons.remove,
                                   color: Colors.orange,
+                                  size: 20,
+                                ),
+                              ),
+                              Text(
+                                '${product.quantity}',
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                             InkWell(
+                                splashColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () {
+                                  cartController.addToCart(product.product);
+                                },
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.orange,
+                                   size: 20
                                 ),
                               ),
                             ],
